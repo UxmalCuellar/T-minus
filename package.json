@@ -1,0 +1,14 @@
+{
+  "name": "t-minus",
+  "version": "1.0.0",
+  "description": "A calender app that shows up coming events on a timeline similar to space  X's launch sequence.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Uxmal Cuellar",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^7.1.9"
+  }
+}
