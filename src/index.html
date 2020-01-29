@@ -5,33 +5,37 @@
     <title>Hello World!</title>
   </head>
   <body>
-    <h1>t-minus</h1>
+    <h1>T-minus</h1>
     <div id="countdown-timer"></div>
     <script>
-      function countdownTimer() {
-        const difference = +new Date("2020-01-21") - +new Date();
-        let remaining = 'Time is up';
+      var countDownDateTime = new Date("Feb 1, 2020 01:00:00").getTime();
+        var x = setInterval(function() {
 
-        if (difference > 0) {
-          const parts = {
-            days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-            hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-            minutes: Math.floor((difference / 1000 / 60 ) % 60),
-            seconds: Math.floor((difference / 1000) % 60),
-          };
+        var now = new Date().getTime();
+        var difference = countDownDateTime - now;
 
-        remaining = Object.keys(parts)
-        .map((part) => {
-          if (!parts[part]) return;
-          return `${parts[part]} ${part}`;
-        })
-        .join(" ");
+        var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        var minutes = Math.floor((difference / 1000 / 60 ) % 60);
+        var seconds = Math.floor((difference / 1000) % 60);
+
+      document.getElementById("countdown-timer").innerHTML = isDaysOrDay(days) + addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds);
+
+      if(difference < 0) {
+        clearInterval(x);
+        document.getElementById("countdown-timer").innerHTML = "Expired"
       }
-      document.getElementById("countdown-timer").innerHTML = remaining;
+    }, 1000);
+
+    function isDaysOrDay(d) {
+      if(d == 0) {
+        return ("")
+      } 
+      return ( d == 1 ? d + " day\n" : d + " days\n")
     }
-    
-    countdownTimer();
-    setInterval(countdownTimer, 1000);
+    function addZero(n) {
+      return (n < 10 ? "0" : "") + n;
+    }
     </script>
 
   </body>
