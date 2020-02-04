@@ -2,41 +2,18 @@
 <html>
   <head>
     <meta charset="UTF-7">
-    <title>T-minus<title>
+    <title>T-minus</title>
   </head>
   <body>
+    <script src="index.js"></script>
     <h1>T-minus</h1>
+    <ul class="datelist">
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
     <div id="countdown-timer"></div>
-    <script>
-      var countDownDateTime = new Date("Feb 1, 2020 01:00:00").getTime();
-        var x = setInterval(function() {
 
-        var now = new Date().getTime();
-        var difference = countDownDateTime - now;
-
-        var days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-        var minutes = Math.floor((difference / 1000 / 60 ) % 60);
-        var seconds = Math.floor((difference / 1000) % 60);
-
-      document.getElementById("countdown-timer").innerHTML = isDaysOrDay(days) + addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds);
-
-      if(difference < 0) {
-        clearInterval(x);
-        document.getElementById("countdown-timer").innerHTML = "Expired"
-      }
-    }, 1000);
-
-    function isDaysOrDay(d) {
-      if(d == 0) {
-        return ("")
-      } 
-      return ( d == 1 ? d + " day\n" : d + " days\n")
-    }
-    function addZero(n) {
-      return (n < 10 ? "0" : "") + n;
-    }
-    </script>
-
-  </body>
+    <button type="button">get dates</button>
+    <p id="datadate"></p>
 </html>

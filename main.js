@@ -20,6 +20,12 @@ app.on('ready', function(){
    const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
    // insert menu
    Menu.setApplicationMenu(mainMenu);
+   //get events from google calendar
+   var python = require('child_process').spawn('python', ['./src/calendarRequest.py']);
+   python.stdout.on('data', function(data){
+      console.log("data: ", data.toString('utf8'));
+   
+   });
 })
 
 const mainMenuTemplate = [
