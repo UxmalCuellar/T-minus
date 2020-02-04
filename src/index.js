@@ -1,3 +1,4 @@
+const {ipcRenderer} = require('electron')
 // Show count down timer
 var countDownDateTime = new Date("Mar 1, 2020 00:00:00").getTime();
 
@@ -28,4 +29,10 @@ function isDaysOrDay(d) {
 
 function addZero(n) {
     return (n < 10 ? "0" : "") + n;
+}
+
+var new_dates = document.getElementById("datelist");
+
+function getDates() {
+    ipcRenderer.send('sync-google-cal', 'ping')
 }

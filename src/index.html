@@ -5,15 +5,18 @@
     <title>T-minus</title>
   </head>
   <body>
-    <script src="index.js"></script>
+
+    <script src="index.js">
+      document.getElementById("sync").addEventListener("click", getDates);
+    </script>
+    
     <h1>T-minus</h1>
-    <ul class="datelist">
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
+    
+    <p id="datelist">Test date</p>
+
     <div id="countdown-timer"></div>
 
-    <button type="button">get dates</button>
-    <p id="datadate"></p>
+    <button id="sync" type="button" onclick="getDates()">Sync</button>
+
+  </body>
 </html>

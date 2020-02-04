@@ -1,6 +1,7 @@
 const electron = require('electron');
 const url = require('url');
 const path = require('path');
+const ipc = require('electron').ipcMain
 
 const {app, BrowserWindow, Menu} = electron
 
@@ -8,7 +9,11 @@ let mainWindow;
 
 app.on('ready', function(){
    // create nre window
-   mainWindow = new BrowserWindow({});
+   mainWindow = new BrowserWindow({
+      webPreferences: {
+         nodeIntegration: true
+      }
+   });
    // Load html into window
    mainWindow.loadURL(url.format({
       pathname: path.join(__dirname, 'src/index.html'),
@@ -24,7 +29,6 @@ app.on('ready', function(){
    var python = require('child_process').spawn('python', ['./src/calendarRequest.py']);
    python.stdout.on('data', function(data){
       console.log("data: ", data.toString('utf8'));
-   
    });
 })
 
@@ -68,3 +72,11 @@ if(process.env.NODE_ENV != 'production'){
       ]
    }) 
 }
+
+ipc.on('sync-google-cal', function(event, arg) {
+   var python = require('child_process').spawn('python', ['./src/calendarRequest.py']);
+
+   python.stdout.on('data', function(data){
+      console.log("data: ", data.toString('utf8'));
+   });
+})
