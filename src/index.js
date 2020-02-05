@@ -38,5 +38,9 @@ var new_dates = document.getElementById("datelist");
 
 function getDates() {
     // Let Main process know 'sync' btn has been clicked
-    ipcRenderer.send('sync-google-cal', 'ping')
+    ipcRenderer.send('sync-google-cal', 'Running sync from renderer')
 }
+
+ipcRenderer.on('run-insert-dates', function(event, arg) {
+    document.getElementById("test").innerHTML = arg
+})

@@ -2,6 +2,7 @@ const electron = require('electron');
 const url = require('url');
 const path = require('path');
 const ipc = require('electron').ipcMain
+const fs = require('fs') 
 
 const {app, BrowserWindow, Menu} = electron
 
@@ -26,10 +27,7 @@ app.on('ready', function(){
    // insert menu
    Menu.setApplicationMenu(mainMenu);
    //get events from google calendar
-   var python = require('child_process').spawn('python', ['./src/calendarRequest.py']);
-   python.stdout.on('data', function(data){
-      console.log("data: ", data.toString('utf8'));
-   });
+   py_calRequest();
 })
 
 const mainMenuTemplate = [
@@ -74,15 +72,20 @@ if(process.env.NODE_ENV != 'production'){
 }
 
 ipc.on('sync-google-cal', function(event, arg) {
+   console.log(arg);
+   py_calRequest();
+})
+
+function py_calRequest() {
    // Get events info from Google Cal and write to file Output.txt
    var python = require('child_process').spawn('python', ['./src/calendarRequest.py']);
 
    python.stdout.on('data', function(data){
-      console.log("data: ", data.toString('utf8'));
-
-      const fs = require('fs') 
+      console.log("python output to file:\n", data.toString('utf8'));
+      
+      mainWindow.webContents.send('run-insert-dates', data);
       fs.writeFile('Output.txt', data.toString('utf8'), (err) => { 
          if (err) throw err; 
       }) 
    });
-})
+}

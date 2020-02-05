@@ -46,7 +46,7 @@ def main():
         print('No upcoming events found.')
     for event in events:
         start = event['start'].get('dateTime', event['start'].get('date'))
-        print(reformat(start), event['summary'])
+        print(reformat(start), event['summary'], "</li>")
 
 
 def reformat(date_time):
@@ -58,7 +58,7 @@ def reformat(date_time):
     new_date = slash.join(new_date)
 
     new_time = date_time[11:16]
-    return new_date + " " + new_time
+    return "<li>" + new_date + " " + new_time
 
 
 if __name__ == '__main__':
