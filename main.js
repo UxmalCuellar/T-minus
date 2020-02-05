@@ -74,9 +74,15 @@ if(process.env.NODE_ENV != 'production'){
 }
 
 ipc.on('sync-google-cal', function(event, arg) {
+   // Get events info from Google Cal and write to file Output.txt
    var python = require('child_process').spawn('python', ['./src/calendarRequest.py']);
 
    python.stdout.on('data', function(data){
       console.log("data: ", data.toString('utf8'));
+
+      const fs = require('fs') 
+      fs.writeFile('Output.txt', data.toString('utf8'), (err) => { 
+         if (err) throw err; 
+      }) 
    });
 })
