@@ -1,25 +1,44 @@
 const {ipcRenderer} = require('electron')
+var dateToCountDown
 
-// Show count down timer
-var countDownDateTime = new Date("Mar 1, 2020 00:00:00").getTime();
+ipcRenderer.on('run-insert-dates', function(event, arg) {
+    // fill select tag with values
+    document.getElementById("dateOpt").innerHTML = arg
+})
+ function selectVal() {
+     var val = document.getElementById('dateOpt');
+     var x = val.options[val.selectedIndex].value;
+     console.log(x)
+     dateToCountDown = x
 
-var x = setInterval(function() {
-
-    var now = new Date().getTime();
-
-    var difference = countDownDateTime - now;
-    var days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-    var minutes = Math.floor((difference / 1000 / 60 ) % 60);
-    var seconds = Math.floor((difference / 1000) % 60);
-
-    document.getElementById("countdown-timer").innerHTML = isDaysOrDay(days) + addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds);
-
-    if(difference < 0) {
-        clearInterval(x);
-        document.getElementById("countdown-timer").innerHTML = "Expired"
+    // var countDownDateTime = new Date(dateToCountDown.value).getTime();
+    if(dateToCountDown == null) {
+        dateToCountDown = new Date().getTime()
+        console.log('Date not selected');
+    } else {
+        console.log(dateToCountDown)
     }
-}, 1000);
+
+    var countDownDateTime = new Date(dateToCountDown).getTime();
+
+    var x = setInterval(function() {
+
+        var now = new Date().getTime();
+
+        var difference = countDownDateTime - now;
+        var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+        var minutes = Math.floor((difference / 1000 / 60 ) % 60);
+        var seconds = Math.floor((difference / 1000) % 60);
+
+        document.getElementById("countdown-timer").innerHTML = isDaysOrDay(days) + addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds);
+
+        if(difference < 0) {
+            clearInterval(x);
+            document.getElementById("countdown-timer").innerHTML = "00:00:00"
+        }
+    }, 1000);
+}
 
 function isDaysOrDay(d) {
     // check how many days are left in timer and return appropriate grammar
@@ -34,13 +53,7 @@ function addZero(n) {
     return (n < 10 ? "0" : "") + n;
 }
 
-var new_dates = document.getElementById("datelist");
-
 function getDates() {
     // Let Main process know 'sync' btn has been clicked
     ipcRenderer.send('sync-google-cal', 'Running sync from renderer')
 }
-
-ipcRenderer.on('run-insert-dates', function(event, arg) {
-    document.getElementById("test").innerHTML = arg
-})

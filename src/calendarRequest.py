@@ -46,19 +46,37 @@ def main():
         print('No upcoming events found.')
     for event in events:
         start = event['start'].get('dateTime', event['start'].get('date'))
-        print(reformat(start), event['summary'], "</li>")
+        print(reformat(start), event['summary'], "</option>")
 
 
 def reformat(date_time):
-    slash = '/'
-    new_date = []
-    new_date.append(date_time[8:10])
-    new_date.append(date_time[5:7])
-    new_date.append(date_time[:4])
-    new_date = slash.join(new_date)
-
+    year = date_time[:4]
+    month = int(date_time[5:7])
+    day = int(date_time[8:10])
     new_time = date_time[11:16]
-    return "<li>" + new_date + " " + new_time
+
+    dateOption = getMonth(month) + " " + str(day) + ", " + year + " " \
+        + new_time + ":00"
+
+    return '<option value="' + dateOption + '">'
+
+
+def getMonth(m):
+    switcher = {
+        1: 'Jan',
+        2: 'Feb',
+        3: 'Mar',
+        4: 'Apr',
+        5: 'May',
+        6: 'Jun',
+        7: 'Jul',
+        8: 'Aug',
+        9: 'Sep',
+        10: 'Nov',
+        11: 'Oct',
+        12: 'Dec'
+    }
+    return switcher.get(m, "Invaild month")
 
 
 if __name__ == '__main__':
