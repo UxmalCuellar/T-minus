@@ -12,6 +12,12 @@ function updateTimer() {
     clearInterval(timerId);    
 }
 
+function abortTask() {
+    console.log("Removing id(abort):", timerId);
+    document.getElementById("countdown-timer").innerHTML = "00:00:00"
+    clearInterval(timerId);    
+}
+
  function selectVal() {
     var countDownTimerHTML = document.getElementById("countdown-timer").innerHTML 
     var val = document.getElementById('dateOpt');

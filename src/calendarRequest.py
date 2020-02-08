@@ -52,7 +52,7 @@ def main():
 
 
 def reformat(date_time):
-    # formats date to Mon 1, Year
+    # formats date to Mon 1, Year e.g. Jan 1, 2020
     year = date_time[:4]
     month = int(date_time[5:7])
     day = int(date_time[8:10])
