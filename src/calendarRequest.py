@@ -41,15 +41,17 @@ def main():
                                           maxResults=10, singleEvents=True,
                                           orderBy='startTime').execute()
     events = events_result.get('items', [])
-
+    new_date = ""
     if not events:
         print('No upcoming events found.')
     for event in events:
         start = event['start'].get('dateTime', event['start'].get('date'))
-        print(reformat(start), event['summary'], "</option>")
+        new_date = reformat(start)
+        print(new_date, new_date[15:22], event['summary'],  "</option>")
 
 
 def reformat(date_time):
+    # formats date to Mon 1, Year
     year = date_time[:4]
     month = int(date_time[5:7])
     day = int(date_time[8:10])
