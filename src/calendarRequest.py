@@ -42,6 +42,7 @@ def main():
                                           orderBy='startTime').execute()
     events = events_result.get('items', [])
     new_date = ""
+    print('<option selected value="">Select an event</option>')
     if not events:
         print('No upcoming events found.')
     for event in events:
