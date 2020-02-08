@@ -1,17 +1,24 @@
 const {ipcRenderer} = require('electron')
 var dateToCountDown
+var timerId;
 
 ipcRenderer.on('run-insert-dates', function(event, arg) {
     // fill select tag with values
     document.getElementById("dateOpt").innerHTML = arg
 })
- function selectVal() {
-     var val = document.getElementById('dateOpt');
-     var x = val.options[val.selectedIndex].value;
-     console.log(x)
-     dateToCountDown = x
 
-    // var countDownDateTime = new Date(dateToCountDown.value).getTime();
+function updateTimer() {
+    console.log("removing old timer");
+    console.log("timer id from updatetimer", timerId);
+    clearInterval(timerId);    
+}
+
+ function selectVal() {
+    var val = document.getElementById('dateOpt');
+    var x = val.options[val.selectedIndex].value;
+    console.log(x)
+    dateToCountDown = x
+
     if(dateToCountDown == null) {
         dateToCountDown = new Date().getTime()
         console.log('Date not selected');
@@ -21,7 +28,7 @@ ipcRenderer.on('run-insert-dates', function(event, arg) {
 
     var countDownDateTime = new Date(dateToCountDown).getTime();
 
-    var x = setInterval(function() {
+    timerId = setInterval(function() {
 
         var now = new Date().getTime();
 
@@ -34,10 +41,11 @@ ipcRenderer.on('run-insert-dates', function(event, arg) {
         document.getElementById("countdown-timer").innerHTML = isDaysOrDay(days) + addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds);
 
         if(difference < 0) {
-            clearInterval(x);
+            clearInterval(timerId);
             document.getElementById("countdown-timer").innerHTML = "00:00:00"
         }
     }, 1000);
+    console.log("running from selectVal timerId", timerId);
 }
 
 function isDaysOrDay(d) {

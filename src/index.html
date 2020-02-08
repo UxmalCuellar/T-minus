@@ -12,10 +12,9 @@
     
     <h1>T-minus</h1>
     
-    <select name="opts" id="dateOpt">
+    <select name="opts" onclick="selectVal()" onchange="updateTimer()" id="dateOpt">
       <option value="Mar 1, 2020 00:00:00" selected="selected">--</option>
     </select>
-    <button id="getVal" onclick="selectVal()">Start Timer</button>
     <div id="countdown-timer"></div>
 
     <button id="sync" type="button" onclick="getDates()">Sync</button>
