@@ -2,6 +2,7 @@ from __future__ import print_function
 import datetime
 import pickle
 import os.path
+import sys
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -48,11 +49,11 @@ def main():
     for event in events:
         start = event['start'].get('dateTime', event['start'].get('date'))
         new_date = reformat(start)
-        print(new_date, new_date[15:22], event['summary'],  "</option>")
+        print(new_date, new_date[15:22], event['summary'], "</option>")
 
 
 def reformat(date_time):
-    # formats date to Mon 1, Year e.g. Jan 1, 2020
+    ''' Formats given date to Mon 1, Year e.g. Jan 1, 2020 '''
     year = date_time[:4]
     month = int(date_time[5:7])
     day = int(date_time[8:10])

@@ -11,8 +11,9 @@
     </script>
     
     <h1>T-minus</h1>
-    
-    <select name="opts" onclick="selectVal()" onchange="updateTimer()" id="dateOpt">
+    <input type="date" id="fromDate" onchange="formatDates()"> 
+    <input type="date" id="toDate"> 
+    <select name="opts" onclick="startTimer()" onchange="updateTimer()" id="dateOpt">
       <option value="Mar 1, 2020 00:00:00" selected="selected">--</option>
     </select>
     <button id="abort" onclick="abortTask()">Abort</button>

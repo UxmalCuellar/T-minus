@@ -77,8 +77,12 @@ ipc.on('sync-google-cal', function(event, arg) {
 })
 
 function py_calRequest() {
-   // Get events info from Google Cal and write to file Output.txt
-   var python = require('child_process').spawn('python', ['./src/calendarRequest.py']);
+   daysInFuture = 7;
+   daysInPast = 3;
+   maxResults = 10;
+   // Get events info from Google Cal and write to file Output file
+   var python = require('child_process').spawn('python', ['./src/calendarRequest.py',
+      daysInPast, daysInFuture, maxResults]);
 
    python.stdout.on('data', function(data){
       console.log("python output to file:\n", data.toString('utf8'));

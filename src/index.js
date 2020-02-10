@@ -1,25 +1,29 @@
 const {ipcRenderer} = require('electron')
+
 var dateToCountDown
 var timerId;
 
 ipcRenderer.on('run-insert-dates', function(event, arg) {
-    // fill select tag with values
+    // fill select tag with options and values
     document.getElementById("dateOpt").innerHTML = arg
 })
 
 function updateTimer() {
+    // stops and removes the current setinterval (timer)
     console.log("Removing id:", timerId);
     clearInterval(timerId);    
 }
 
 function abortTask() {
+    // Stop the currnt running timer and set to default
     console.log("Removing id(abort):", timerId);
     document.getElementById("countdown-timer").innerHTML = "00:00:00"
+    document.getElementById("dateOpt").selectedIndex = 0;
     clearInterval(timerId);    
 }
 
- function selectVal() {
-    var countDownTimerHTML = document.getElementById("countdown-timer").innerHTML 
+ function startTimer() {
+    // Gets users selection and begins countdown 
     var val = document.getElementById('dateOpt');
     var x = val.options[val.selectedIndex].value;
     console.log(x)
@@ -72,4 +76,11 @@ function addZero(n) {
 function getDates() {
     // Let Main process know 'sync' btn has been clicked
     ipcRenderer.send('sync-google-cal', 'Running sync from renderer')
+}
+
+function formatDates() {
+    // converts selected date to RFC3339 format
+    var input = document.getElementById("fromDate").value;
+    var dateEntered = new Date(input);
+    console.log(dateEntered.toISOString()); 
 }
