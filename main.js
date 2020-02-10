@@ -44,6 +44,7 @@ const mainMenuTemplate = [
                shell.openExternal('https://calendar.google.com/calendar/r?tab=rc1')
             }
          },
+         {type: 'separator'},
          {
             label: 'Quit',
             accelerator: process.platform == 'darwin' ? 'Command+Q' :
