@@ -3,6 +3,7 @@ const url = require('url');
 const path = require('path');
 const ipc = require('electron').ipcMain
 const fs = require('fs') 
+const shell = require('electron').shell
 
 const {app, BrowserWindow, Menu} = electron
 
@@ -35,7 +36,13 @@ const mainMenuTemplate = [
       label:'File', 
       submenu: [
          {
-            label: 'add event'
+            label: 'Add event'
+         },
+         {
+            label: 'Open Google Calendar', 
+            click() {
+               shell.openExternal('https://calendar.google.com/calendar/r?tab=rc1')
+            }
          },
          {
             label: 'Quit',
