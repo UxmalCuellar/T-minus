@@ -1,7 +1,19 @@
 const {ipcRenderer} = require('electron')
+const electron = require('electron')
+const path = require('path')
+const BrowserWindow = electron.remote.BrowserWindow
 
 var dateToCountDown
 var timerId;
+
+
+function showSettings() {
+    const modalPath = path.join('file://', __dirname, 'settings.html')
+    let win = new BrowserWindow({width: 400, height: 350})
+    win.on('close', function() { win = null})
+    win.loadURL(modalPath)
+    win.show()
+}
 
 ipcRenderer.on('run-insert-dates', function(event, arg) {
     // fill select tag with options and values
@@ -84,3 +96,10 @@ function formatDates() {
     var dateEntered = new Date(input);
     console.log(dateEntered.toISOString()); 
 }
+
+
+// function addDays(date, days) {
+//   var result = new Date(date);
+//   result.setDate(result.getDate() + days);
+//   return result;
+// }

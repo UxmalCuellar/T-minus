@@ -8,6 +8,7 @@
 
     <script src="index.js">
       document.getElementById("sync").addEventListener("click", getDates);
+      document.getElementById("settingsBtn").addEventListener("click", showSettings);
     </script>
     
     <h1>T-minus</h1>
@@ -20,6 +21,8 @@
     <div id="countdown-timer">00:00:00</div>
 
     <button id="sync" type="button" onclick="getDates()">Sync</button>
+    <button id="settingsBtn" onclick="showSettings()">settings</button>
+
 
   </body>
 </html>
