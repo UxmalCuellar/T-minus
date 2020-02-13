@@ -1,7 +1,7 @@
-const {ipcRenderer} = require('electron')
-const electron = require('electron')
-const path = require('path')
-const BrowserWindow = electron.remote.BrowserWindow
+const {ipcRenderer} = require('electron');
+const electron = require('electron');
+const path = require('path');
+const BrowserWindow = electron.remote.BrowserWindow;
 
 var dateToCountDown
 var timerId;
@@ -9,7 +9,15 @@ var timerId;
 
 function showSettings() {
     const modalPath = path.join('file://', __dirname, 'settings.html')
-    let win = new BrowserWindow({width: 400, height: 350})
+    let win = new BrowserWindow({
+        alwaysOnTop: true,
+        movable: false,
+        width: 400,
+        height: 350,
+        webPreferences: {
+           nodeIntegration: true
+    }
+})
     win.on('close', function() { win = null})
     win.loadURL(modalPath)
     win.show()

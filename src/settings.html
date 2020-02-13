@@ -12,6 +12,8 @@
 </head>
 
 <body>
+    <script src="settings.js">
+    </script>
     <div class="settings">
         <h1>Settings</h1>
         <div id="past" class="row">
@@ -39,18 +41,16 @@
         <div class="row" id="maxRes">
             <p>Max results</p>
             <div class="slider">
-                <input class="slider" id="getRange" type="range" value="10" min="5" max="50" step="5">
-                <span id="slider_value">0</span>
+                <input id="range_weight" type="range" oninput="range_weight_disp.value = range_weight.value" value="10" min="5" max="50" step="5">
+                <output id="range_weight_disp"></output>
             </div>
         </div>
         <div id="btns" class="row">
-            <button id="closeAndClose">Cancel</button>
+            <button id="cancelAndClose" onclick="closeWin()">Cancel</button>
             <button id="apply">Apply</button>
         </div>
     </div>
 
-    <script src="settings.js">
-    </script>
 </body>
 
 </html>
