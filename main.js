@@ -8,6 +8,7 @@ const shell = require('electron').shell
 const {app, BrowserWindow, Menu} = electron
 
 let mainWindow;
+let settingsWindow;
 
 app.on('ready', function(){
    // create nre window
@@ -29,7 +30,29 @@ app.on('ready', function(){
    Menu.setApplicationMenu(mainMenu);
    //get events from google calendar
    py_calRequest();
-})
+});
+
+// Handle settings window
+function createSettingsWindow() {
+   settingsWindow = new BrowserWindow({
+         title: 'Settings',
+         alwaysOnTop: true,
+         frame: false,
+         resizable: false, 
+         movable: false,
+         width: 400,
+         height: 350,
+         webPreferences: {
+            nodeIntegration: true
+         }
+   });
+   settingsWindow.loadURL(url.format({
+      pathname: path.join(__dirname, 'src/settings.html'),
+      protocol: 'file',
+      slashes: true
+   }));
+//   settingsWindow.on('close', function() { settingsWindow = null})
+}
 
 const mainMenuTemplate = [
    {
@@ -42,6 +65,15 @@ const mainMenuTemplate = [
             label: 'Open Google Calendar', 
             click() {
                shell.openExternal('https://calendar.google.com/calendar/r?tab=rc1')
+            }
+         },
+         {
+            label: 'Settings',
+            accelerator: process.platform == 'darwin' ? 'Command+;' :
+            'Ctrl+;',
+            click() {
+               createSettingsWindow();
+               console.log('open settings');
             }
          },
          {type: 'separator'},

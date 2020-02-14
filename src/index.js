@@ -6,23 +6,6 @@ const BrowserWindow = electron.remote.BrowserWindow;
 var dateToCountDown
 var timerId;
 
-
-function showSettings() {
-    const modalPath = path.join('file://', __dirname, 'settings.html')
-    let win = new BrowserWindow({
-        alwaysOnTop: true,
-        movable: false,
-        width: 400,
-        height: 350,
-        webPreferences: {
-           nodeIntegration: true
-    }
-})
-    win.on('close', function() { win = null})
-    win.loadURL(modalPath)
-    win.show()
-}
-
 ipcRenderer.on('run-insert-dates', function(event, arg) {
     // fill select tag with options and values
     document.getElementById("dateOpt").innerHTML = arg
@@ -104,7 +87,6 @@ function formatDates() {
     var dateEntered = new Date(input);
     console.log(dateEntered.toISOString()); 
 }
-
 
 // function addDays(date, days) {
 //   var result = new Date(date);

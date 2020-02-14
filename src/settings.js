@@ -3,7 +3,7 @@ const path = require('path');
 const remote = electron.remote;
 
 function closeWin() {
+    //close settings window
     var window = remote.getCurrentWindow();
-    console.log("trrying to close window");
     window.close();
 }

@@ -8,12 +8,10 @@
 
     <script src="index.js">
       document.getElementById("sync").addEventListener("click", getDates);
-      document.getElementById("settingsBtn").addEventListener("click", showSettings);
     </script>
     
     <h1>T-minus</h1>
     <input type="date" id="fromDate" onchange="formatDates()"> 
-    <input type="date" id="toDate"> 
     <select name="opts" onclick="startTimer()" onchange="updateTimer()" id="dateOpt">
       <option value="Mar 1, 2020 00:00:00" selected="selected">--</option>
     </select>
@@ -21,7 +19,6 @@
     <div id="countdown-timer">00:00:00</div>
 
     <button id="sync" type="button" onclick="getDates()">Sync</button>
-    <button id="settingsBtn" onclick="showSettings()">settings</button>
 
 
   </body>
