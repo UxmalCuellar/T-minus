@@ -24,6 +24,11 @@ app.on('ready', function(){
       slashes: true
    }));
 
+   // Quit app when closed
+   mainWindow.on('close', function() {
+      app.quit();
+   })
+
    // build menu from template
    const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
    // insert menu
@@ -51,7 +56,8 @@ function createSettingsWindow() {
       protocol: 'file',
       slashes: true
    }));
-//   settingsWindow.on('close', function() { settingsWindow = null})
+   // Handle garbage collection
+   settingsWindow.on('close', function() { settingsWindow = null});
 }
 
 const mainMenuTemplate = [
