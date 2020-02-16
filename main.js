@@ -4,11 +4,34 @@ const path = require('path');
 const ipc = require('electron').ipcMain
 const fs = require('fs') 
 const shell = require('electron').shell
+const Store = require('electron-store');
 
 const {app, BrowserWindow, Menu} = electron
 
 let mainWindow;
 let settingsWindow;
+
+const schema = {
+   future: {
+      type: 'number',
+      default: 7
+   },
+   past: {
+      type: 'number',
+      default: 3
+   },
+   maxResults: {
+      type: 'number',
+      default: 10
+   }
+}
+
+const store = new Store({schema});
+
+function setDefault() {
+   // set default values
+   store.reset('future', 'past', 'maxResults');
+}
 
 app.on('ready', function(){
    // create nre window
@@ -34,7 +57,7 @@ app.on('ready', function(){
    // insert menu
    Menu.setApplicationMenu(mainMenu);
    //get events from google calendar
-   py_calRequest();
+   // py_calRequest();
 });
 
 // Handle settings window
@@ -122,10 +145,17 @@ ipc.on('sync-google-cal', function(event, arg) {
    py_calRequest();
 })
 
+ipc.on('update-settings', function(event, msg, past, future, maxResults) {
+   console.log(msg);
+   console.log(arg1);
+   console.log(arg2);
+   console.log(arg3);
+   store.set('future', future); 
+   store.set('past', past);
+   store.set('maxResults', maxResults);
+})
+
 function py_calRequest() {
-   daysInFuture = 7;
-   daysInPast = 3;
-   maxResults = 10;
    // Get events info from Google Cal and write to file Output file
    var python = require('child_process').spawn('python', ['./src/calendarRequest.py',
       daysInPast, daysInFuture, maxResults]);
