@@ -147,9 +147,6 @@ ipc.on('sync-google-cal', function(event, arg) {
 
 ipc.on('update-settings', function(event, msg, past, future, maxResults) {
    console.log(msg);
-   console.log(arg1);
-   console.log(arg2);
-   console.log(arg3);
    store.set('future', future); 
    store.set('past', past);
    store.set('maxResults', maxResults);
