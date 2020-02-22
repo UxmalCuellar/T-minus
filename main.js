@@ -34,7 +34,7 @@ function setDefault() {
 }
 
 app.on('ready', function(){
-   // create nre window
+   // create new window
    mainWindow = new BrowserWindow({
       webPreferences: {
          nodeIntegration: true
@@ -150,6 +150,14 @@ ipc.on('update-settings', function(event, msg, past, future, maxResults) {
    store.set('future', future); 
    store.set('past', past);
    store.set('maxResults', maxResults);
+})
+
+ipc.on('get-settings-values', function(event, msg) {
+   console.log(msg);
+   var future = store.get('future');
+   var past = store.get('past');
+   var maxRes = store.get('maxResults');
+   event.sender.send('return-setting-values',future, past, maxRes);
 })
 
 function py_calRequest() {

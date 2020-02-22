@@ -17,3 +17,16 @@ function applySettings() {
 
     ipcRenderer.send('update-settings', 'settings changed', past, future, res)
 }
+
+function setValues() {
+    // Load the users/default settings from json file
+    console.log("loading values for settings");
+    ipcRenderer.send('get-settings-values', 'loading settings values');
+}
+
+ipcRenderer.on('return-setting-values',  function(event, future, past, maxR) {
+    document.getElementById('radioFuture'+future).checked = true;
+    document.getElementById('radioPast'+past).checked = true;
+    document.getElementById('range_weight').value = maxR;
+    document.getElementById('range_weight_disp').innerHTML = maxR;
+}) 

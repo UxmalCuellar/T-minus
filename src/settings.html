@@ -11,16 +11,16 @@
     <title>Settings</title>
 </head>
 
-<body>
-    <script src="settings.js">
-    </script>
+<body onload="setValues()">
+    <script src="settings.js" type="text/javascript"></script>
+
     <div class="settings">
         <h1>Settings</h1>
-        <div id="past" class="row">
+        <div  id="pastGroup" class="row">
             <input type="radio" name="Past" id="radioPast1" value="1">
             <label for="Past1">1</label>
 
-            <input type="radio" name="Past" id="radioPast3" value="3" checked>
+            <input type="radio" name="Past" id="radioPast3" value="3">
             <label for="Past3">3</label>
 
             <input type="radio" name="Past" id="radioPast7" value="7">
@@ -31,7 +31,7 @@
             <input type="radio" name="Future" id="radioFuture3" value="3">
             <label for="Future3">3</label>
 
-            <input type="radio" name="Future" id="radioFuture7" value="7" checked>
+            <input type="radio" name="Future" id="radioFuture7" value="7">
             <label for="Future7">7</label>
 
             <input type="radio" name="Future" id="radioFuture14" value="14">
@@ -51,6 +51,6 @@
         </div>
     </div>
 
-</body>
+</body >
 
 </html>
