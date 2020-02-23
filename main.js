@@ -28,11 +28,6 @@ const schema = {
 
 const store = new Store({schema});
 
-function setDefault() {
-   // set default values
-   store.reset('future', 'past', 'maxResults');
-}
-
 app.on('ready', function(){
    // create new window
    mainWindow = new BrowserWindow({
@@ -159,6 +154,12 @@ ipc.on('get-settings-values', function(event, msg) {
    var maxRes = store.get('maxResults');
    event.sender.send('return-setting-values',future, past, maxRes);
 })
+
+ipc.on('reset-settings',function(event, msg) {
+      // set default values
+      console.log(msg);
+      store.reset('future', 'past', 'maxResults');
+   })
 
 function py_calRequest() {
    // Get events info from Google Cal and write to file Output file

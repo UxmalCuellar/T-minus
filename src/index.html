@@ -11,8 +11,10 @@
     </script>
     
     <h1>T-minus</h1>
+    <!-- FIXME: date input not needed here -->
     <input type="date" id="fromDate" onchange="formatDates()"> 
     <select name="opts" onclick="startTimer()" onchange="updateTimer()" id="dateOpt">
+      <!-- FIXME: option value not necessary -->
       <option value="Mar 1, 2020 00:00:00" selected="selected">--</option>
     </select>
     <button id="abort" onclick="abortTask()">Abort</button>
