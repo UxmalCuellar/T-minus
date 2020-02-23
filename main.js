@@ -163,8 +163,11 @@ ipc.on('reset-settings',function(event, msg) {
 
 function py_calRequest() {
    // Get events info from Google Cal and write to file Output file
+   var future = store.get('future');
+   var past = store.get('past');
+   var maxRes = store.get('maxResults');
    var python = require('child_process').spawn('python', ['./src/calendarRequest.py',
-      daysInPast, daysInFuture, maxResults]);
+      future, past, maxRes]);
 
    python.stdout.on('data', function(data){
       console.log("python output to file:\n", data.toString('utf8'));

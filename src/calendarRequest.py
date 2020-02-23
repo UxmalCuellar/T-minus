@@ -37,9 +37,12 @@ def main():
     service = build('calendar', 'v3', credentials=creds)
 
     # Call the Calendar API
-    now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' means UTC time
-    events_result = service.events().list(calendarId='primary', timeMin=now,
-                                          maxResults=10, singleEvents=True,
+    userPreferences = getBeforeAfterDates()
+    events_result = service.events().list(calendarId='primary',
+                                          timeMin=userPreferences[1],
+                                          timeMax=userPreferences[0],
+                                          maxResults=userPreferences[2],
+                                          singleEvents=True,
                                           orderBy='startTime').execute()
     events = events_result.get('items', [])
     new_date = ""
@@ -81,6 +84,23 @@ def getMonth(m):
         12: 'Dec'
     }
     return switcher.get(m, "Invaild month")
+
+
+def getBeforeAfterDates():
+    now = datetime.datetime.utcnow()
+    future = int(sys.argv[1])
+    past = int(sys.argv[2]) * -1
+    maxRes = int(sys.argv[3])
+
+    fDate = now + datetime.timedelta(days=future)
+    fDate = fDate.isoformat('T') + 'Z'
+    pDate = now + datetime.timedelta(days=past)
+    pDate = pDate.isoformat('T') + 'Z'
+    results = []
+    results.append(fDate)
+    results.append(pDate)
+    results.append(maxRes)
+    return results
 
 
 if __name__ == '__main__':
