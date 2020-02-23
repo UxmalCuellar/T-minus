@@ -52,7 +52,7 @@ app.on('ready', function(){
    // insert menu
    Menu.setApplicationMenu(mainMenu);
    //get events from google calendar
-   // py_calRequest();
+   py_calRequest();
 });
 
 // Handle settings window

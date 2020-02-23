@@ -2,7 +2,6 @@ const electron = require('electron');
 const {ipcRenderer} = require('electron');
 const path = require('path');
 const remote = electron.remote;
-// TODO: reset to default feature (settings) 
 // BUG: multiple setting windows can be opened
 
 function closeWin() {
