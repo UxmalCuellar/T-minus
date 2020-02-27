@@ -77,6 +77,10 @@ h1 {
     font-size: 16px;
 }
 
+#timer {
+    font-size: 30px;
+}
+
 #abortBtn {
     display: inline-block;
     background-color: lightcoral;

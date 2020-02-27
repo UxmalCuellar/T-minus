@@ -20,7 +20,7 @@ function updateTimer() {
 function abortTask() {
     // Stop the currnt running timer and set to default
     console.log("Removing id(abort):", timerId);
-    document.getElementById("countdown-timer").innerHTML = "00:00:00"
+    document.getElementById("timer").innerHTML = "00:00:00"
     document.getElementById("dateOpt").selectedIndex = 0;
     clearInterval(timerId);    
 }
@@ -34,7 +34,7 @@ function abortTask() {
 
     if(dateToCountDown == '') {
         dateToCountDown = new Date().getTime();
-        document.getElementById("countdown-timer").innerHTML = "00:00:00"
+        document.getElementById("timer").innerHTML = "00:00:00"
         console.log('Date not selected');
     } else {
         console.log(dateToCountDown)
@@ -51,11 +51,11 @@ function abortTask() {
             var minutes = Math.floor((difference / 1000 / 60 ) % 60);
             var seconds = Math.floor((difference / 1000) % 60);
 
-            document.getElementById("countdown-timer").innerHTML = isDaysOrDay(days) + addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds);
+            document.getElementById("timer").innerHTML = isDaysOrDay(days) + addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds);
 
             if(difference < 0) {
                 clearInterval(timerId);
-                document.getElementById("countdown-timer").innerHTML = "00:00:00"
+                document.getElementById("timer").innerHTML = "00:00:00"
             }
     console.log("New timerId created", timerId);
         }, 1000);
@@ -87,9 +87,3 @@ function formatDates() {
     var dateEntered = new Date(input);
     console.log(dateEntered.toISOString()); 
 }
-
-// function addDays(date, days) {
-//   var result = new Date(date);
-//   result.setDate(result.getDate() + days);
-//   return result;
-// }
