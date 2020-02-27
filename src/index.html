@@ -16,7 +16,7 @@
     document.getElementById("sync").addEventListener("click", getDates);
   </script>
 
-  <h1>T-minus</h1>
+  <p id="app">t-minus</p>
   <div id="grid-container">
     <div id="selectEvents">
       <!-- TODO: get select tag to show as list  -->
@@ -33,15 +33,16 @@
       <!-- TODO: add time and date from google calendar -->
       <h2 id="details">End time: 12:00pm<br>Date: 20.02.2020</h2>
     </div>
-    <div id="syncBtn"><button id="sync" type="button" onclick="getDates()">Sync</button></div>
+    <div id="sync"><button id="syncBtn" type="button" onclick="getDates()">Sync</button></div>
     <div id="description">
       <!-- TODO: add description from google calendar -->
       <p id="info">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat exercitationem blanditiis,
         perspiciatis illo corporis, quod, sit debitis quasi mollitia aliquam doloribus voluptatibus. Quidem veritatis
         odit vero, neque assumenda porro. Excepturi.</p>
     </div>
-    <div id="abortBtn"><button id="abort" onclick="abortTask()">Abort</button></div>
+    <div id="abort"><button id="abortBtn" onclick="abortTask()">ABORT</button></div>
   </div>
+
 </body>
 
 
