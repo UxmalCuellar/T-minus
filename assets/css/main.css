@@ -1,0 +1,67 @@
+:root {
+    --main-red: rgb(204, 80, 67);
+}
+body, html {
+    background-color: black;
+    color: var(--main-red);
+}
+
+h1 {
+    color: var(--main-red);
+}
+
+#selectEvents {
+    grid-row: 1 / span 2;
+    grid-column: 1 / 1;
+    background-color: aqua;
+}
+
+#countdown-timer {
+    grid-column: 2 / 2; 
+    grid-row: 1 / span 2;
+    background-color: red;
+}
+
+#eventNameDiv {
+    grid-row: 1 / 1;
+    grid-column: 3 / 3;
+    background-color: antiquewhite;
+}
+
+#eventDetails {
+    grid-row: 2 / 2;
+    grid-column: 3 / 3;
+    background-color: saddlebrown;
+}
+
+#syncBtn {
+    grid-column: 1 / 1;
+    grid-row: 3 / 3;
+    background-color: gray;
+}
+
+#description {
+    grid-row: 3 / 3;
+    grid-column: 2 / 2;
+    background-color: darkcyan;
+}
+
+#abort {
+    grid-row: 3 / 3;
+    grid-column: 3 / 3;
+    background-color: wheat;
+}
+
+#grid-container {
+/* TODO: add font to text */
+    font-family: 'Inconsolata', ;
+    display: grid;
+    grid-template-columns: 20% 60% 20%; 
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+#grid-container > div {
+    padding: 20px 0;
+    font-size: 16px;
+}

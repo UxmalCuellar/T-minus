@@ -1,24 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-7">
-    <title>T-minus</title>
-  </head>
-  <body>
 
-    <script src="index.js">
-      document.getElementById("sync").addEventListener("click", getDates);
-    </script>
-    
-    <h1>T-minus</h1>
-    <select name="opts" onclick="startTimer()" onchange="updateTimer()" id="dateOpt">
-      <option  selected="selected">--</option>
-    </select>
-    <button id="abort" onclick="abortTask()">Abort</button>
+<head>
+  <meta charset="UTF-7">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <title>T-minus</title>
+</head>
+
+<body>
+  <!-- <style>
+    @import url('https://fonts.googleapis.com/css?family=Inconsolata&display=swap');
+  </style> -->
+  <script src="index.js">
+    document.getElementById("sync").addEventListener("click", getDates);
+  </script>
+
+  <h1>T-minus</h1>
+  <div id="grid-container">
+    <div id="selectEvents">
+      <!-- TODO: get select tag to show as list  -->
+      <select name="opts" onclick="startTimer()" onchange="updateTimer()" id="dateOpt">
+        <option selected="selected">--</option>
+      </select>
+    </div>
     <div id="countdown-timer">00:00:00</div>
+    <div id="eventNameDiv">
+      <!-- TODO get event name and print here -->
+      <h2 id="eventName">Project X name</h2>
+    </div>
+    <div id="eventDetails">
+      <!-- TODO: add time and date from google calendar -->
+      <h2 id="details">End time: 12:00pm<br>Date: 20.02.2020</h2>
+    </div>
+    <div id="syncBtn"><button id="sync" type="button" onclick="getDates()">Sync</button></div>
+    <div id="description">
+      <!-- TODO: add description from google calendar -->
+      <p id="info">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat exercitationem blanditiis,
+        perspiciatis illo corporis, quod, sit debitis quasi mollitia aliquam doloribus voluptatibus. Quidem veritatis
+        odit vero, neque assumenda porro. Excepturi.</p>
+    </div>
+    <div id="abortBtn"><button id="abort" onclick="abortTask()">Abort</button></div>
+  </div>
+</body>
 
-    <button id="sync" type="button" onclick="getDates()">Sync</button>
 
-
-  </body>
 </html>
