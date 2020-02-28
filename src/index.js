@@ -25,11 +25,32 @@ function abortTask() {
     clearInterval(timerId);    
 }
 
+function formatEventName(str) {
+    str = str.substring(str.indexOf(",") + 1);
+    return str
+}
+
+function formattedDateTime(str) {
+    newTime = str.slice(-8);
+    newDate = str.slice(0, -8);
+    newTime = newTime.slice(0, 5);
+    newStr = 'Date<br> ' + newDate + '<br>' + 'End Time<br> ' + newTime;
+    return newStr;
+}
+
  function startTimer() {
+     // BUG previous timer does not get cancelled sometimes
     // Gets users selection and begins countdown 
     var val = document.getElementById('dateOpt');
     var x = val.options[val.selectedIndex].value;
+    var text = document.getElementById('dateOpt');
+    var y = text.options[text.selectedIndex].text;
+    var formatName = formatEventName(y);
+    var formatDate = formattedDateTime(x);
+    
     console.log(x)
+    document.getElementById('eventDetails').innerHTML = formatDate;
+    document.getElementById('eventName').innerHTML = formatName;
     dateToCountDown = x
 
     if(dateToCountDown == '') {
