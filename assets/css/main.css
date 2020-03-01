@@ -1,19 +1,26 @@
 :root {
-    --main-red: rgb(204, 80, 67);
+    --main-green: #00FF99;
+    --bg-dgrey: #272D2D;
+    --shadow: #0c0e0e;
+    --abort-red: #E3170A;
+    --abort-red-alpha: #E3170A80;
+    --alert-yellow: #F7B32B;
+    --alert-yellow-alpha: #F7B32B80;
+    --green-sync: #78BC61;
 }
 body, html {
-    background-color: black;
-    color: var(--main-red);
+    background-color: var(--shadow);
+    /* background-color: var(--bg-dgrey); */
+    color: var(--main-green);
 }
 
 h1 {
-    color: var(--main-red);
+    color: var(--main-green);
 }
 
 #selectEvents {
     grid-row: 1 / span 2;
     grid-column: 1 / 1;
-    border-style: solid;
 }
 
 /* Grid Layout */
@@ -29,13 +36,11 @@ h1 {
 #eventNameDiv {
     grid-row: 1 / 1;
     grid-column: 3 / 3;
-    border-style: solid;
 }
 
 #eventDetails {
     grid-row: 2 / 2;
     grid-column: 3 / 3;
-    border-style: solid;
 }
 
 #sync {
@@ -44,13 +49,11 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-style: solid;
 }
 
 #description {
     grid-row: 3 / 3;
     grid-column: 2 / 2;
-    border-style: solid;
 }
 
 #abort {
@@ -59,7 +62,6 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-style: solid;
 }
 
 #grid-container {
@@ -72,35 +74,42 @@ h1 {
     /* height: 100vh; */
 }
 
-#grid-container > div {
+#grid-container > div:not(#countdown-timer):not(#description) {
     padding: 20px;
     font-size: 16px;
+    border-style: solid;
+    border-width: 1px;
 }
 
 #timer {
-    font-size: 30px;
+    font-size: 50px;
+}
+.btns {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border-width: 1px;
+    border-style: solid;
+    background: transparent;
+    text-align: center;
+    transition: 0.5s;
+}
+
+#abortBtn:hover {
+    border-color: var(--abort-red);
+}
+
+#syncBtn:hover {
+    border-color: var(--alert-yellow);
 }
 
 #abortBtn {
-    display: inline-block;
-    background-color: lightcoral;
-    color: white;
-    width: 70px;
-    height: 70px;
-    border: none;
-    border-radius: 50%;
-    text-align: center;
-    font-weight: bold;
+    border-color: var(--abort-red-alpha);
+    color: var(--abort-red);
 }
 
 #syncBtn {
-    display: inline-block;
-    background-color: lightskyblue;
-    color: white;
-    width: 70px;
-    height: 70px;
-    border: none;
-    border-radius: 50%;
-    text-align: center;
-    font-weight: bold;
+    border-color: var(--alert-yellow-alpha);
+    color: var(--alert-yellow);
 }
