@@ -8,9 +8,15 @@
     --alert-yellow-alpha: #F7B32B80;
     --green-sync: #78BC61;
 }
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 body, html {
     background-color: var(--shadow);
-    /* background-color: var(--bg-dgrey); */
     color: var(--main-green);
 }
 
@@ -67,11 +73,12 @@ h1 {
 #grid-container {
 /* TODO: add font to text */
     font-family: 'Inconsolata', ;
+    padding: 7px;
     display: grid;
-    grid-template-columns: 20% 60% 20%; 
+    grid-template-columns: 20% 57.5% 20%; 
     grid-gap: 10px;
     overflow: hidden;
-    /* height: 100vh; */
+    height: 100vh;
 }
 
 #grid-container > div:not(#countdown-timer):not(#description) {
