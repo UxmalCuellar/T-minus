@@ -20,7 +20,10 @@ function updateTimer() {
 function abortTask() {
     // Stop the currnt running timer and set to default
     console.log("Removing id(abort):", timerId);
-    document.getElementById("timer").innerHTML = "00:00:00"
+    document.getElementById("timer").innerHTML = "00:00:00";
+    document.getElementById("eventName").innerHTML = "--";
+    document.getElementById("dateDetails").innerHTML = "--";
+    document.getElementById("timeDetails").innerHTML = "--";
     document.getElementById("dateOpt").selectedIndex = 0;
     clearInterval(timerId);
 }
@@ -31,11 +34,13 @@ function formatEventName(str) {
 }
 
 function formattedDateTime(str) {
-    newTime = str.slice(-8);
-    newDate = str.slice(0, -8);
+    var data = [];
+    var newTime = str.slice(-8);
+    var newDate = str.slice(0, -8);
     newTime = newTime.slice(0, 5);
-    newStr = 'Date<br> ' + newDate + '<br>' + 'End Time<br> ' + newTime;
-    return newStr;
+    data.push(newDate); 
+    data.push(newTime);
+    return data;
 }
 
 function startTimer() {
@@ -46,16 +51,18 @@ function startTimer() {
     var text = document.getElementById('dateOpt');
     var y = text.options[text.selectedIndex].text;
     var formatName = formatEventName(y);
-    var formatDate = formattedDateTime(x);
-
-    console.log(x)
-    document.getElementById('eventDetails').innerHTML = formatDate;
+    var data = formattedDateTime(x);
+    var nDate = data[0];
+    var ntime = data[1];
+    document.getElementById('dateDetails').innerHTML = nDate;
+    document.getElementById('timeDetails').innerHTML = ntime;
     document.getElementById('eventName').innerHTML = formatName;
     dateToCountDown = x
 
-    if (dateToCountDown == '') {
+    if (dateToCountDown == '--') {
         dateToCountDown = new Date().getTime();
         document.getElementById("timer").innerHTML = "00:00:00"
+        document.getElementById("dateDetails").innerHTML = "--";
         console.log('Date not selected');
     } else {
         console.log(dateToCountDown)

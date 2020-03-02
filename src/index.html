@@ -9,9 +9,6 @@
 </head>
 
 <body>
-    <!-- <style>
-    @import url('https://fonts.googleapis.com/css?family=Inconsolata&display=swap');
-  </style> -->
     <script src="index.js">
         document.getElementById("sync").addEventListener("click", getDates);
     </script>
@@ -19,6 +16,7 @@
     <div id="grid-container">
         <div id="selectEvents">
             <!-- TODO: get select tag to show as list  -->
+            <h2 class="heading">EVENTS</h2>
             <select name="opts" onclick="startTimer()" onchange="updateTimer()" id="dateOpt">
                 <option selected="selected">--</option>
             </select>
@@ -27,10 +25,20 @@
             <p id="timer">00:00:00</p>
         </div>
         <div id="eventNameDiv">
-            <h2 id="eventName">Project X name</h2>
+            <div id="selectSection">
+                <h2 class="heading">EVENT</h2>
+                <p class="innerhtml" id="eventName"></p>
+            </div>
         </div>
         <div id="eventDetails">
-            <h2 id="details">Date<br><br>End time</h2>
+            <div id="dateSection">
+                <h2 class="heading">DATE</h2>
+                <p class="innerhtml" id="dateDetails"></p>
+            </div>
+            <div id="timeSection">
+                <h2 class="heading">END TIME</h2>
+                <p class="innerhtml" id="timeDetails"></p>
+            </div>
         </div>
         <div id="sync">
             <button class="btns" id="syncBtn" type="button" onclick="getDates()">SYNC</button>

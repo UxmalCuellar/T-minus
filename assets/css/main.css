@@ -16,6 +16,7 @@
 }
 
 body, html {
+    font-family: 'Inconsolata', regular;
     background-color: var(--shadow);
     color: var(--main-green);
 }
@@ -71,19 +72,17 @@ h1 {
 }
 
 #grid-container {
-/* TODO: add font to text */
-    font-family: 'Inconsolata', ;
     padding: 7px;
     display: grid;
-    grid-template-columns: 20% 57.5% 20%; 
+    grid-template-columns: 20% 57% 20%; 
     grid-gap: 10px;
     overflow: hidden;
     height: 100vh;
 }
 
 #grid-container > div:not(#countdown-timer):not(#description) {
-    padding: 20px;
-    font-size: 16px;
+    padding: 10px;
+    font-size: 10px;
     border-style: solid;
     border-width: 1px;
 }
@@ -91,6 +90,22 @@ h1 {
 #timer {
     font-size: 50px;
 }
+
+#dateSection {
+    height: 50%;
+}
+
+#timeSection {
+    height: 50%;
+}
+.heading {
+    font-size: 15px;
+}
+
+.innerhtml {
+    font-size: 12px;
+}
+
 .btns {
     display: inline-block;
     width: 70px;
