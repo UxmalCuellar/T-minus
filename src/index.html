@@ -2,39 +2,43 @@
 <html>
 
 <head>
-  <meta charset="UTF-7">
-  <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <title>T-minus</title>
+    <meta charset="UTF-7">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <title>T-minus</title>
 </head>
 
 <body>
-  <!-- <style>
+    <!-- <style>
     @import url('https://fonts.googleapis.com/css?family=Inconsolata&display=swap');
   </style> -->
-  <script src="index.js">
-    document.getElementById("sync").addEventListener("click", getDates);
-  </script>
+    <script src="index.js">
+        document.getElementById("sync").addEventListener("click", getDates);
+    </script>
 
-  <div id="grid-container">
-    <div id="selectEvents">
-      <!-- TODO: get select tag to show as list  -->
-      <select name="opts" onclick="startTimer()" onchange="updateTimer()" id="dateOpt">
-        <option selected="selected">--</option>
-      </select>
+    <div id="grid-container">
+        <div id="selectEvents">
+            <!-- TODO: get select tag to show as list  -->
+            <select name="opts" onclick="startTimer()" onchange="updateTimer()" id="dateOpt">
+                <option selected="selected">--</option>
+            </select>
+        </div>
+        <div id="countdown-timer">
+            <p id="timer">00:00:00</p>
+        </div>
+        <div id="eventNameDiv">
+            <h2 id="eventName">Project X name</h2>
+        </div>
+        <div id="eventDetails">
+            <h2 id="details">Date<br><br>End time</h2>
+        </div>
+        <div id="sync">
+            <button class="btns" id="syncBtn" type="button" onclick="getDates()">SYNC</button>
+        </div>
+        <div id="description">
+        </div>
+        <div id="abort"><button class="btns" id="abortBtn" onclick="abortTask()">ABORT</button></div>
     </div>
-    <div id="countdown-timer"><p id="timer">00:00:00</p></div>
-    <div id="eventNameDiv">
-      <h2 id="eventName">Project X name</h2>
-    </div>
-    <div id="eventDetails">
-      <h2 id="details">Date<br><br>End time</h2>
-    </div>
-    <div id="sync"><button class="btns" id="syncBtn" type="button" onclick="getDates()">SYNC</button></div>
-    <div id="description">
-      <p id="info"></p>
-    </div>
-    <div id="abort"><button class="btns" id="abortBtn" onclick="abortTask()">ABORT</button></div>
-  </div>
 </body>
+
 </html>
