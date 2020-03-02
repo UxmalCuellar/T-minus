@@ -16,12 +16,9 @@
 }
 
 body, html {
+    text-shadow: 0px 0px 3px var(--main-green);
     font-family: 'Inconsolata', regular;
     background-color: var(--shadow);
-    color: var(--main-green);
-}
-
-h1 {
     color: var(--main-green);
 }
 
@@ -38,6 +35,7 @@ h1 {
     justify-content: center;
     align-items: center;
     font-size: 120px;
+    text-shadow: 0px 0px 3px white;
 }
 
 #eventNameDiv {
@@ -84,11 +82,13 @@ h1 {
     padding: 10px;
     font-size: 10px;
     border-style: solid;
-    border-width: 1px;
+    border-width: 1px; 
+    box-shadow: inset 0px 0px 2px var(--main-green),  0px 0px 2px var(--main-green);
 }
 
 #timer {
     font-size: 50px;
+    color: white;
     text-align: center;
 }
 
@@ -132,11 +132,21 @@ h1 {
 }
 
 #abortBtn {
+    box-shadow: 0px 0px 3px var(--abort-red);
     border-color: var(--abort-red-alpha);
     color: var(--abort-red);
+    text-shadow: 0px 0px 4px var(--abort-red);
 }
 
 #syncBtn {
+    box-shadow: 0px 0px 3px var(--alert-yellow);
     border-color: var(--alert-yellow-alpha);
     color: var(--alert-yellow);
+    text-shadow: 0px 0px 4px var(--alert-yellow);
+}
+
+#dateOpt {
+    background-color: var(--shadow);
+    color: var(--main-green);
+    max-width: 100px;
 }
