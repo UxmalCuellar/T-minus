@@ -59,10 +59,12 @@ function startTimer() {
     document.getElementById('eventName').innerHTML = formatName;
     dateToCountDown = x
 
-    if (dateToCountDown == '--') {
+    if (dateToCountDown == '--' || dateToCountDown == '') {
         dateToCountDown = new Date().getTime();
         document.getElementById("timer").innerHTML = "00:00:00"
         document.getElementById("dateDetails").innerHTML = "--";
+        document.getElementById("timeDetails").innerHTML = "--";
+        document.getElementById("eventName").innerHTML = "--";
         console.log('Date not selected');
     } else {
         console.log(dateToCountDown)

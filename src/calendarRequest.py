@@ -46,13 +46,13 @@ def main():
                                           orderBy='startTime').execute()
     events = events_result.get('items', [])
     new_date = ""
-    print('<option selected value="">Select an event</option>')
+    print('<option selected value="">Events loaded</option>')
     if not events:
         print('No upcoming events found.')
     for event in events:
         start = event['start'].get('dateTime', event['start'].get('date'))
         new_date = reformat(start)
-        print(new_date, new_date[15:22], event['summary'], "</option>")
+        print(new_date, event['summary'], "</option>")
 
 
 def reformat(date_time):
