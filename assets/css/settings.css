@@ -46,8 +46,8 @@
   text-shadow: var(--main-green);
 }
 
-.radioBtns {
-  padding-right: 1px;
+.radioSection {
+  padding: 10px;
 }
 
 .row {
@@ -55,9 +55,6 @@
   display:flex;
   align-items:center;
 }
-.row:hover input {
-  background-color: var(--abort-red);
-} 
 
 .slidecontainer {
   width: 50%;
@@ -66,6 +63,7 @@
 .slider_value {
   font-size: 20px
 }
+
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
@@ -82,8 +80,4 @@
   border-radius: 50%;
   background: #4CAF50;
   cursor: pointer;
-}
-
-.lastradio {
-  padding-right: 10px;
 }
