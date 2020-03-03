@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../assets/css/settings.css">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
 
     <title>Settings</title>
 </head>
@@ -15,42 +16,54 @@
 
     <div class="settings">
         <h1>Settings</h1>
-        <div  id="pastGroup" class="row">
-            <input type="radio" name="Past" id="radioPast1" value="1">
-            <label for="Past1">1</label>
+        <div id="pastGroup" class="row">
+            <label for="Past1">1
+                <input class="radioBtns" type="radio" name="Past" id="radioPast1" value="1">
+                <span class="checkmark"></span>
+            </label>
 
-            <input type="radio" name="Past" id="radioPast3" value="3">
-            <label for="Past3">3</label>
-
-            <input type="radio" name="Past" id="radioPast7" value="7">
-            <label for="Past7">7</label>
+            <label for="Past3">3
+                <input class="radioBtns" type="radio" name="Past" id="radioPast3" value="3">
+                <span class="checkmark"></span>
+            </label>
+            <label class="lastradio" for="Past7">7
+                <input class="radioBtns" type="radio" name="Past" id="radioPast7" value="7">
+                <span class="checkmark"></span>
+            </label>
             <p>Days in past</p>
         </div>
         <div id="future" class="row">
-            <input type="radio" name="Future" id="radioFuture3" value="3">
-            <label for="Future3">3</label>
+            <label for="Future3">3
+                <input class="radioBtns" type="radio" name="Future" id="radioFuture3" value="3">
+                <span class="checkmark"></span>
+            </label>
 
-            <input type="radio" name="Future" id="radioFuture7" value="7">
-            <label for="Future7">7</label>
+            <label for="Future7">7
+                <input class="radioBtns" type="radio" name="Future" id="radioFuture7" value="7">
+                <span class="checkmark"></span>
+            </label>
 
-            <input type="radio" name="Future" id="radioFuture14" value="14">
-            <label for="Future14">14</label>
+            <label class="lastradio" for="Future14">14
+                <input class="radioBtns" type="radio" name="Future" id="radioFuture14" value="14">
+                <span class="checkmark"></span>
+            </label>
             <p>Days in future</p>
         </div>
         <div class="row" id="maxRes">
             <p>Max results</p>
             <div class="slider">
-                <input id="range_weight" type="range" oninput="range_weight_disp.value = range_weight.value" value="10" min="5" max="50" step="5">
+                <input id="range_weight" type="range" oninput="range_weight_disp.value = range_weight.value" value="10"
+                    min="5" max="50" step="5">
                 <output id="range_weight_disp"></output>
             </div>
         </div>
         <div id="btns" class="row">
-            <button id="cancelAndClose" onclick="closeWin()">Cancel</button>
-            <button id="apply" onclick="applySettings()">Apply</button>
-            <button id="setToDefault" onclick="resetSettings()" >Reset</button>
+            <button class="settingBtns" id="cancelAndClose" onclick="closeWin()">Cancel</button>
+            <button class="settingBtns" id="apply" onclick="applySettings()">Apply</button>
+            <button class="settingBtns" id="setToDefault" onclick="resetSettings()">Reset</button>
         </div>
     </div>
 
-</body >
+</body>
 
 </html>
