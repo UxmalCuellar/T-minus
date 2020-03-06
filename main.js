@@ -2,7 +2,6 @@ const electron = require('electron');
 const url = require('url');
 const path = require('path');
 const ipc = require('electron').ipcMain
-const fs = require('fs') 
 const shell = require('electron').shell
 const Store = require('electron-store');
 
@@ -84,9 +83,6 @@ const mainMenuTemplate = [
    {
       label:'File', 
       submenu: [
-         {
-            label: 'Add event'
-         },
          {
             label: 'Open Google Calendar', 
             click() {
@@ -175,8 +171,5 @@ function py_calRequest() {
       console.log("python output to file:\n", data.toString('utf8'));
       
       mainWindow.webContents.send('run-insert-dates', data);
-      fs.writeFile('Output.txt', data.toString('utf8'), (err) => { 
-         if (err) throw err; 
-      }) 
    });
 }

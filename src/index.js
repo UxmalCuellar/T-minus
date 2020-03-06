@@ -110,10 +110,3 @@ function getDates() {
     // Let Main process know 'sync' btn has been clicked
     ipcRenderer.send('sync-google-cal', 'Running sync from renderer')
 }
-
-function formatDates() {
-    // converts selected date to RFC3339 format
-    var input = document.getElementById("fromDate").value;
-    var dateEntered = new Date(input);
-    console.log(dateEntered.toISOString());
-}

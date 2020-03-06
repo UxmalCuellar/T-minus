@@ -1,13 +1,7 @@
 :root {
     --main-green: #00FF99;
     --main-green-alpha: #00FF9980;
-    --bg-dgrey: #272D2D;
     --shadow: #0c0e0e;
-    --abort-red: #E3170A;
-    --abort-red-alpha: #E3170A80;
-    --alert-yellow: #F7B32B;
-    --alert-yellow-alpha: #F7B32B80;
-    --green-sync: #78BC61;
 }
 
 .body, html {
