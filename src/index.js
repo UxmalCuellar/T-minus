@@ -81,7 +81,7 @@ function startTimer() {
             var minutes = Math.floor((difference / 1000 / 60) % 60);
             var seconds = Math.floor((difference / 1000) % 60);
 
-            document.getElementById("timer").innerHTML = isDaysOrDay(days) + addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds);
+            document.getElementById("timer").innerHTML = 'T- ' + isDaysOrDay(days) + addZero(hours) + ":" + addZero(minutes) + ":" + addZero(seconds);
 
             if (difference < 0) {
                 clearInterval(timerId);
