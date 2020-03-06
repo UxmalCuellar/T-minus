@@ -8,7 +8,6 @@
     --alert-yellow: #F7B32B;
     --alert-yellow-alpha: #F7B32B80;
     --green-sync: #78BC61;
-
 }
 
 .body, html {
@@ -20,9 +19,18 @@
 
 .settings {
   border: 1px solid var(--main-green);
+  box-shadow: 0px 0px 3px var(--main-green);
   padding: 7px;
   display: block;
 }
+
+.row {
+  margin: 10px;
+  display:flex;
+  align-items:center;
+}
+
+/* Buttons */
 
 #btns {
     display: inline-block;
@@ -42,7 +50,7 @@
 
 .settingBtns:hover {
   border-color: var(--main-green); 
-  box-shadow: var(--main-green);
+  box-shadow: 0px 0px 3px var(--main-green);
   text-shadow: var(--main-green);
 }
 
@@ -50,34 +58,34 @@
   padding: 10px;
 }
 
-.row {
-  margin: 10px;
-  display:flex;
-  align-items:center;
-}
+/* Slider */
 
-.slidecontainer {
-  width: 50%;
-} 
-
-.slider_value {
-  font-size: 20px
-}
-
-.slider::-webkit-slider-thumb {
+input[type=range] {
   -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  height: 20px;
+  background-color: transparent;
+  background: var(--shadow);
+  border: 1px solid var(--main-green);
+  box-shadow: 0px 0px 3px var(--main-green);
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  box-shadow: 0px 0px 3px var(--main-green);
   height: 25px;
-  border-radius: 50%;
-  background: #4CAF50;
+  width: 2px;
+  background: var(--main-green);
+  margin-top: -3px;
   cursor: pointer;
 }
 
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #4CAF50;
-  cursor: pointer;
+.slider_container .slider {
+  position: relative;
+  outline: none;
+  padding: 10px;
+  background-color: transparent;
 }
