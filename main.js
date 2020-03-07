@@ -7,6 +7,9 @@ const Store = require('electron-store');
 
 const {app, BrowserWindow, Menu} = electron
 
+// Set env to production
+process.env.NODE_ENV = 'production';
+
 let mainWindow;
 let settingsWindow;
 
