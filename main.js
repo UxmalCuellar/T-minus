@@ -165,13 +165,14 @@ ipc.on('reset-settings',function(event, msg) {
 
 function py_calRequest() {
    // Get events info from Google Cal and write to file Output file
+   console.log("calendar request running...")
    var future = store.get('future');
    var past = store.get('past');
    var maxRes = store.get('maxResults');
-   var python = spawn('./src/dist/calendarRequest/calendarRequest',
+   var pythonProcess = spawn('./src/dist/calendarRequest/calendarRequest',
       [future, past, maxRes]);
 
-   python.stdout.on('data', function(data){
+   pythonProcess.stdout.on('data', function(data){
       console.log("python output to file:\n", data.toString('utf8'));
       
       mainWindow.webContents.send('run-insert-dates', data);
