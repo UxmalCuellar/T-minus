@@ -1,4 +1,5 @@
 const electron = require('electron');
+const spawn = require('child_process').spawn;
 const url = require('url');
 const path = require('path');
 const ipc = require('electron').ipcMain
@@ -167,8 +168,8 @@ function py_calRequest() {
    var future = store.get('future');
    var past = store.get('past');
    var maxRes = store.get('maxResults');
-   var python = require('child_process').spawn('python', ['./src/calendarRequest.py',
-      future, past, maxRes]);
+   var python = spawn('./src/dist/calendarRequest/calendarRequest',
+      [future, past, maxRes]);
 
    python.stdout.on('data', function(data){
       console.log("python output to file:\n", data.toString('utf8'));
