@@ -1,14 +1,15 @@
-##Require
+# T-minus
+## Require
 ```pip install pyinstaller
 npm install 
 ```
-##Packaging
+## Packaging
 ```Packaging python
 pyinstaller calrequest.py
 ```
-##Electron packaging
+## Electron packaging
 ```npm run package-linux
 ```
-##Creating installer
+## Creating installer
 ```npm run create-debian-installer
 ```
